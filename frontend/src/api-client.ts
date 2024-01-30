@@ -1,9 +1,20 @@
+// Programmer: Londelle Sheehan (shansheehan@gmail.com)
+// Date: January 29, 2024
+// Version: 1.0
+// Purpose: Contains functions for interacting with the backend API.
+
 import { RegisterFormData } from "./pages/Register";
 import { SignInFormData } from "./pages/SignIn";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+// Retrieve the base URL for the API from environment variables or use an empty string if not provided
+const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL || "";
 
-export const register = async (formData: RegisterFormData) => {
+/**
+ * Registers a new user by sending registration form data to the backend API.
+ * @param formData - Registration form data.
+ * @throws Error if the registration request fails.
+ */
+export const register = async (formData: RegisterFormData): Promise<void> => {
   const response = await fetch(`${API_BASE_URL}/api/users/register`, {
     method: "POST",
     credentials: "include",
@@ -19,7 +30,13 @@ export const register = async (formData: RegisterFormData) => {
   }
 };
 
-export const signIn = async (formData: SignInFormData) => {
+/**
+ * Signs in a user by sending sign-in form data to the backend API.
+ * @param formData - Sign-in form data.
+ * @returns User information if sign-in is successful.
+ * @throws Error if the sign-in request fails.
+ */
+export const signIn = async (formData: SignInFormData): Promise<any> => {
   const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
     method: "POST",
     credentials: "include",
@@ -36,7 +53,12 @@ export const signIn = async (formData: SignInFormData) => {
   return body;
 };
 
-export const validateToken = async () => {
+/**
+ * Validates the user's token with the backend API.
+ * @throws Error if the token validation fails.
+ * @returns User information if the token is valid.
+ */
+export const validateToken = async (): Promise<any> => {
   const response = await fetch(`${API_BASE_URL}/api/auth/validate-token`, {
     credentials: "include",
   });
@@ -47,13 +69,17 @@ export const validateToken = async () => {
   return await response.json();
 };
 
-export const signOut = async () => {
+/**
+ * Signs out the user by sending a request to invalidate the token with the backend API.
+ * @throws Error if sign out fails.
+ */
+export const signOut = async (): Promise<void> => {
   const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
     credentials: "include",
     method: "POST",
   });
 
-  if(!response.ok) {
-    throw new Error("Error during sign out.")
+  if (!response.ok) {
+    throw new Error("Error during sign out.");
   }
 };

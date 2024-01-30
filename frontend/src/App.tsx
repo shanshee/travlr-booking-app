@@ -1,3 +1,8 @@
+// Programmer: Londelle Sheehan (shansheehan@gmail.com)
+// Date: January 29, 2024
+// Version: 1.0
+// Purpose: Defines the main routing configuration for the application.
+
 import {
   BrowserRouter as Router,
   Route,
@@ -8,10 +13,14 @@ import Layout from "./layouts/Layout";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
 
+/**
+ * Main component defining the routing configuration for the application.
+ */
 const App = () => {
   return (
     <Router>
       <Routes>
+        {/* Route for the home page */}
         <Route
           path="/"
           element={
@@ -20,6 +29,7 @@ const App = () => {
             </Layout>
           }
         />
+        {/* Route for the registration page */}
         <Route
           path="/register"
           element={
@@ -28,6 +38,7 @@ const App = () => {
             </Layout>
           }
         />
+        {/* Route for the sign-in page */}
         <Route
           path="/sign-in"
           element={
@@ -37,14 +48,16 @@ const App = () => {
           }
         />
 
+        {/* Route for the search page */}
         <Route
           path="/search"
           element={
             <Layout>
-              <p>Seach Page</p>
+              <p>Search Page</p>
             </Layout>
           }
         />
+        {/* Default route to redirect to the home page if the entered URL does not match any route */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
