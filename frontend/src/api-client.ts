@@ -1,6 +1,6 @@
 // Programmer: Londelle Sheehan (shansheehan@gmail.com)
-// Date: January 29, 2024
-// Version: 1.0
+// Date: January 30, 2024
+// Version: 1.1
 // Purpose: Contains functions for interacting with the backend API.
 
 import { RegisterFormData } from "./pages/Register";
@@ -82,4 +82,23 @@ export const signOut = async (): Promise<void> => {
   if (!response.ok) {
     throw new Error("Error during sign out.");
   }
+};
+
+/**
+ * Adds a new hotel by sending hotel form data to the backend API.
+ * @param hotelFormData - Hotel form data.
+ * @throws Error if the request to add the hotel fails.
+ * @returns Response JSON data if the request is successful.
+ */
+export const addMyHotel = async (hotelFormData: FormData) => {
+  const response = await fetch(`${API_BASE_URL}/api/my-hotels`, {
+    method: "POST",
+    credentials: "include",
+    body: hotelFormData,
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to add hotel");
+  }
+  return response.json();
 };
