@@ -45,7 +45,11 @@ app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 // Routes setup
 app.use("/api/auth", authRoutes); // Authentication routes
 app.use("/api/users", userRoutes); // User-related routes
-app.use("/api/my-hotels", myHotelRoutes)
+app.use("/api/my-hotels", myHotelRoutes); // Adding hotel routes
+
+app.get("*", (req:Request, res:Response)=>{
+  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+});
 
 // Start server on port 3000
 app.listen(3000, () => {
