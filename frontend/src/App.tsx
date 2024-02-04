@@ -1,0 +1,92 @@
+// Programmer: Londelle Sheehan (shansheehan@gmail.com)
+// Date: January 29, 2024
+// Version: 1.0
+// Purpose: Defines the main routing configuration for the application.
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import Layout from "./layouts/Layout";
+import Register from "./pages/Register";
+import SignIn from "./pages/SignIn";
+import AddHotel from "./pages/AddHotel";
+import { useAppContext } from "./contexts/AppContext";
+import MyHotels from "./pages/MyHotels";
+
+/**
+ * Main component defining the routing configuration for the application.
+ */
+const App = () => {
+  const { isLoggedIn } = useAppContext();
+  return (
+    <Router>
+      <Routes>
+        {/* Route for the home page */}
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <p>Home Page</p>
+            </Layout>
+          }
+        />
+        {/* Route for the registration page */}
+        <Route
+          path="/register"
+          element={
+            <Layout>
+              <Register />
+            </Layout>
+          }
+        />
+        {/* Route for the sign-in page */}
+        <Route
+          path="/sign-in"
+          element={
+            <Layout>
+              <SignIn />
+            </Layout>
+          }
+        />
+
+        {isLoggedIn && (
+          <>
+            <Route
+              path="/add-hotel"
+              element={
+                <Layout>
+                  <AddHotel />
+                </Layout>
+              }
+            />
+          </>
+        )}
+
+        {/* Route for the search page */}
+        <Route
+          path="/search"
+          element={
+            <Layout>
+              <p>Search Page</p>
+            </Layout>
+          }
+        />
+        <Route
+              path="/my-hotels"
+              element={
+                <Layout>
+                  <MyHotels />
+                </Layout>
+              }
+            />
+        {/* Default route to redirect to the home page if the entered URL does not match any route */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
