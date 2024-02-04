@@ -1,6 +1,6 @@
 // Programmer: Londelle Sheehan (shansheehan@gmail.com)
-// Date: January 29, 2024
-// Version: 1.0
+// Date: February 4, 2024
+// Version: 1.1
 // Purpose: Defines the main routing configuration for the application.
 
 import {
@@ -75,6 +75,7 @@ const App = () => {
             </Layout>
           }
         />
+        {/* Route for editing a hotel */}
         <Route
               path="/edit-hotel/:hotelId"
               element={
@@ -83,6 +84,7 @@ const App = () => {
                 </Layout>
               }
             />
+        {/* Route for user's hotels */}
         <Route
               path="/my-hotels"
               element={

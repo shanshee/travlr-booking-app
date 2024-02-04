@@ -1,5 +1,5 @@
 // Programmer: Londelle Sheehan (shansheehan@gmail.com)
-// Date: January 30, 2024
+// Date: February 4, 2024
 // Version: 1.1
 // Purpose: Contains functions for interacting with the backend API.
 
@@ -104,29 +104,46 @@ export const addMyHotel = async (hotelFormData: FormData) => {
   return response.json();
 };
 
+/**
+ * Fetches user's hotels from the backend API.
+ * @throws Error if there is an error fetching hotels.
+ * @returns An array of HotelType objects.
+ */
 export const fetchMyHotels = async (): Promise<HotelType[]> => {
   const response = await fetch(`${API_BASE_URL}/api/my-hotels`, {
     credentials: "include"
   });
 
-  if(!response.ok) {
+  if (!response.ok) {
     throw new Error("Error fetching hotels");
   }
 
   return response.json();
 };
 
+/**
+ * Fetches a hotel by its ID from the backend API.
+ * @param hotelId - ID of the hotel to fetch.
+ * @throws Error if there is an error fetching the hotel.
+ * @returns A HotelType object.
+ */
 export const fetchMyHotelById = async (hotelId: string): Promise<HotelType> => {
   const response = await fetch(`${API_BASE_URL}/api/my-hotels/${hotelId}`, {
     credentials: "include"
   });
 
   if (!response.ok) {
-    throw new Error("Error fetching Hotels");
+    throw new Error("Error fetching hotel");
   }
   return response.json();
 };
 
+/**
+ * Updates a hotel by its ID with new data from the backend API.
+ * @param hotelFormData - Updated hotel form data.
+ * @throws Error if there is an error updating the hotel.
+ * @returns Response JSON data if the update is successful.
+ */
 export const updateMyHotelById = async (hotelFormData: FormData) => {
   const response = await fetch(`${API_BASE_URL}/api/my-hotels/${hotelFormData.get("hotelId")}`, {
     method: "PUT",
@@ -134,8 +151,8 @@ export const updateMyHotelById = async (hotelFormData: FormData) => {
     credentials: "include"
   });
 
-  if(!response.ok) {
-    throw new Error("Failed to update Hotel")
+  if (!response.ok) {
+    throw new Error("Failed to update hotel")
   }
   return response.json();
-}
+};

@@ -1,3 +1,9 @@
+// File: ImagesSection.js
+// Programmer: Londelle Sheehan (shansheehan@gmail.com)
+// Date: February 1, 2024
+// Version: 1.0
+// Purpose: Component for managing images in a hotel form.
+
 import { useFormContext } from "react-hook-form";
 import { HotelFormData } from "./ManageHotelForm";
 
@@ -9,8 +15,10 @@ const ImagesSection = () => {
     setValue,
   } = useFormContext<HotelFormData>();
 
+  // Get existing image URLs from form data
   const existingImageUrls = watch("imageUrls");
 
+  // Function to handle image deletion
   const handleDelete = (
     event: React.MouseEvent<HTMLButtonElement>,
     imageUrl: string
@@ -24,13 +32,19 @@ const ImagesSection = () => {
 
   return (
     <div>
+      {/* Section header */}
       <h2 className="text-2xl font-bold mb-3">Images</h2>
+
+      {/* Image section with delete buttons */}
       <div className="border rounded p-4 flex flex-col gap-4">
         {existingImageUrls && (
           <div className="grid grid-cols-6 gap-4">
             {existingImageUrls.map((url) => (
-              <div className="relative group">
+              <div key={url} className="relative group">
+                {/* Image */}
                 <img src={url} className="min-h-full object-cover" />
+
+                {/* Delete button */}
                 <button
                   onClick={(event) => handleDelete(event, url)}
                   className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 text-white"
@@ -41,6 +55,8 @@ const ImagesSection = () => {
             ))}
           </div>
         )}
+
+        {/* Input for adding new images */}
         <input
           type="file"
           accept="image/*"
@@ -50,8 +66,9 @@ const ImagesSection = () => {
             validate: (imageFiles) => {
               const totalLength = imageFiles.length + (existingImageUrls?.length || 0);
 
+              // Validation for minimum and maximum number of images
               if (totalLength === 0) {
-                return "Atleast one image must be added.";
+                return "At least one image must be added.";
               }
 
               if (totalLength > 6) {
@@ -63,6 +80,8 @@ const ImagesSection = () => {
           })}
         />
       </div>
+
+      {/* Error message for imageFiles */}
       {errors.imageFiles && (
         <span className="text-red-500 text-sm font-bold">
           {errors.imageFiles.message}

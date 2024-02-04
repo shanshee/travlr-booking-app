@@ -1,7 +1,7 @@
 /*
 File: hotelRoutes.ts
 Author: Londelle Sheehan (shansheehan@gmail.com)
-Date: January 29, 2024
+Date: February 4, 2024
 Version: 1.0
 Purpose: This file defines routes for handling hotel-related operations.
 */
@@ -69,6 +69,7 @@ router.post(
   }
 );
 
+// GET route for fetching all hotels for a user
 router.get("/", verifyToken, async (req: Request, res: Response) => {
   try {
     const hotels = await Hotel.find({ userId: req.userId });
@@ -78,6 +79,7 @@ router.get("/", verifyToken, async (req: Request, res: Response) => {
   }
 });
 
+// GET route for fetching a specific hotel for a user
 router.get("/:id", verifyToken, async (req: Request, res: Response) => {
   const id = req.params.id.toString();
   try {
@@ -91,6 +93,7 @@ router.get("/:id", verifyToken, async (req: Request, res: Response) => {
   }
 });
 
+// PUT route for updating a hotel
 router.put(
   "/:hotelId",
   verifyToken,
@@ -129,6 +132,7 @@ router.put(
   }
 );
 
+// Function to upload images to Cloudinary
 async function uploadImages(imageFiles: Express.Multer.File[]) {
   const uploadPromises = imageFiles.map(async (image) => {
     const b64 = Buffer.from(image.buffer).toString("base64");

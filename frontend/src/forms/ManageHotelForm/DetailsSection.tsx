@@ -1,15 +1,24 @@
+// Programmer: Londelle Sheehan
+// Contact Info: shansheehan@gmail.com
+// Date: January 31, 2024
+// Version: 1.0
+// Purpose: This file defines the DetailsSection component for adding hotel details.
+
+
 import { useFormContext } from "react-hook-form";
 import { HotelFormData } from "./ManageHotelForm";
 
 const DetailsSection = () => {
+  // Access the form context using useFormContext from react-hook-form
   const {
     register,
-    formState: { errors },
+    formState: { errors }, // Destructure register function and errors from useFormContext
   } = useFormContext<HotelFormData>();
 
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-3xl font-bold mb-3">Add Hotel</h1>
+      {/* Name input field */}
       <label className="text-gray-700 text-sm font-bold flex-1">
         Name
         <input
@@ -22,6 +31,7 @@ const DetailsSection = () => {
         )}
       </label>
 
+      {/* City and Country input fields */}
       <div className="flex gap-4">
         <label className="text-gray-700 text-sm font-bold flex-1">
           City
@@ -46,6 +56,8 @@ const DetailsSection = () => {
           )}
         </label>
       </div>
+
+      {/* Description textarea */}
       <label className="text-gray-700 text-sm font-bold flex-1">
         Description
         <textarea
@@ -57,6 +69,8 @@ const DetailsSection = () => {
           <span className="text-red-500">{errors.description.message}</span>
         )}
       </label>
+
+      {/* Price Per Night input field */}
       <label className="text-gray-700 text-sm font-bold max-w-[50%]">
         Price Per Night
         <input
@@ -69,6 +83,8 @@ const DetailsSection = () => {
           <span className="text-red-500">{errors.pricePerNight.message}</span>
         )}
       </label>
+
+      {/* Star Rating select field */}
       <label className="text-gray-700 text-sm font-bold max-w-[50%]">
         Star Rating
         <select
