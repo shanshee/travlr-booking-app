@@ -1,13 +1,17 @@
-// File: Search.js
-// Programmer: Londelle Sheehan (Contact: shansheehan@gmail.com)
-// Date: February 1, 2024
-// Version: 1.0
-// Purpose: This file contains the Search component, which is a placeholder component for the search results page.
-// It uses context to access search-related data.
+/*
+  File: Search.tsx
+  Programmer: Londelle Sheehan (Contact: shansheehan@gmail.com)
+  Date: February 1, 2024
+  Version: 1.0
+  Purpose: This file contains the Search component, which is a placeholder component for the search results page.
+  It uses context to access search-related data.
 
+  This component renders a search page with filters and displays search results based on the user's input.
+*/
+
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import * as apiClient from "../api-client";
-import { useState } from "react";
 import { useSearchContext } from "../contexts/SearchContext";
 import SearchResultsCard from "../components/SearchResultsCard";
 import Pagination from "../components/Pagination";
@@ -17,7 +21,6 @@ import FacilitiesFilter from "../components/FacilitiesFilter";
 import PriceFilter from "../components/PriceFilter";
 
 const Search = () => {
-  // Access search context
   const search = useSearchContext();
   const [page, setPage] = useState<number>(1);
   const [selectedStars, setSelectedStars] = useState<string[]>([]);
@@ -39,13 +42,13 @@ const Search = () => {
     maxPrice: selectedPrice?.toString(),
     sortOption,
   };
+
   const { data: hotelData } = useQuery(["searchHotels", searchParams], () =>
     apiClient.searchHotels(searchParams)
   );
 
   const handleStarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const starRating = event.target.value;
-
     setSelectedStars((prevStars) =>
       event.target.checked
         ? [...prevStars, starRating]
@@ -57,7 +60,6 @@ const Search = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const hotelType = event.target.value;
-
     setSelectedHotelTypes((prevHotelTypes) =>
       event.target.checked
         ? [...prevHotelTypes, hotelType]
@@ -67,7 +69,6 @@ const Search = () => {
 
   const handleFacilityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const facility = event.target.value;
-
     setSelectedFacilities((prevFacilities) =>
       event.target.checked
         ? [...prevFacilities, facility]
@@ -122,7 +123,7 @@ const Search = () => {
           </select>
         </div>
         {hotelData?.data.map((hotel) => (
-          <SearchResultsCard hotel={hotel} />
+          <SearchResultsCard key={hotel._id} hotel={hotel} />
         ))}
         <div>
           <Pagination

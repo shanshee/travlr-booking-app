@@ -1,12 +1,25 @@
+/*
+  File: hotelRoutes.ts
+  Programmer: Londelle Sheehan
+  Contact: shansheehan@gmail.com
+  Date: February 11, 2024
+  Version: 1.0
+  Purpose: Define routes for hotel-related operations
+  
+  This file contains route handlers for hotel-related operations such as searching for hotels,
+  fetching all hotels, and retrieving a specific hotel by ID. It also includes middleware for
+  verifying user authentication. Feel free to edit and enhance as needed.
+*/
+
 import express, { Request, Response } from "express";
 import Hotel from "../models/hotel";
 import { param, validationResult } from "express-validator";
 import verifyToken from "../middleware/auth";
 import { HotelSearchResponse } from "../shared/types";
 
-
 const router = express.Router();
 
+// Route handler for searching hotels
 router.get("/search", async (req: Request, res: Response) => {
   try {
     const query = constructSearchQuery(req.query);
@@ -53,6 +66,7 @@ router.get("/search", async (req: Request, res: Response) => {
   }
 });
 
+// Route handler for fetching all hotels
 router.get("/", async (req: Request, res: Response) => {
   try {
     const hotels = await Hotel.find().sort("-lastUpdated");
@@ -63,6 +77,7 @@ router.get("/", async (req: Request, res: Response) => {
   }
 });
 
+// Route handler for fetching a specific hotel by ID
 router.get(
   "/:id",
   [param("id").notEmpty().withMessage("Hotel ID is required")],
@@ -84,7 +99,7 @@ router.get(
   }
 );
 
-
+// Function to construct search query based on query parameters
 const constructSearchQuery = (queryParams: any) => {
   let constructedQuery: any = {};
 

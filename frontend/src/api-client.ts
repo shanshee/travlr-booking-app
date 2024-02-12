@@ -1,7 +1,13 @@
-// Programmer: Londelle Sheehan (shansheehan@gmail.com)
-// Date: February 4, 2024
-// Version: 1.1
-// Purpose: Contains functions for interacting with the backend API.
+/*
+  File: apiFunctions.ts
+  Programmer: Londelle Sheehan (shansheehan@gmail.com)
+  Date: February 11, 2024
+  Version: 1.2
+  Purpose: Contains functions for interacting with the backend API.
+
+  This file contains functions for handling various interactions with the backend API,
+  including user registration, sign-in, token validation, sign-out, and hotel-related operations.
+*/
 
 import { RegisterFormData } from "./pages/Register";
 import { SignInFormData } from "./pages/SignIn";
@@ -171,6 +177,12 @@ export type SearchParams = {
   sortOption?: string;
 };
 
+/**
+ * Searches for hotels based on the provided search parameters.
+ * @param searchParams - Search parameters.
+ * @throws Error if there is an error fetching hotels.
+ * @returns A HotelSearchResponse object containing search results and pagination information.
+ */
 export const searchHotels = async (searchParams: SearchParams): Promise<HotelSearchResponse> => {
   const queryParams = new URLSearchParams();
   queryParams.append("destination", searchParams.destination || "");
