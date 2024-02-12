@@ -1,7 +1,7 @@
 // Programmer: Londelle Sheehan
 // Contact Info: shansheehan@gmail.com
-// Date: January 29, 2024
-// Version: 1.0
+// Date: February 5, 2024
+// Version: 1.1
 // Purpose: Define a Layout component for structuring the overall page layout
 
 // Import necessary dependencies
@@ -9,6 +9,7 @@ import Footer from "../components/Footer"; // Import Footer component
 import Header from "../components/Header"; // Import Header component
 import Hero from "../components/Hero"; // Import Hero component
 import React from "react"; // Import React
+import SearchBar from "../components/SearchBar";
 
 // Define Props interface for Layout component
 interface Props {
@@ -22,6 +23,9 @@ const Layout = ({ children }: Props) => {
     <div className="flex flex-col min-h-screen">
       <Header /> {/* Render Header component */}
       <Hero /> {/* Render Hero component */}
+      <div className="container mx-auto" >
+        <SearchBar /> {/* Render Search component */}
+      </div>
       {/* Main content container with padding and flex-grow */}
       <div className="container mx-auto py-10 flex-1">
         {children} {/* Render children components */}

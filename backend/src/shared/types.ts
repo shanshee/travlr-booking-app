@@ -1,4 +1,10 @@
- // Define the type for the Hotel document
+// File: HotelTypes.ts
+// Programmer: Londelle Sheehan (Contact: shansheehan@gmail.com)
+// Date: February 5, 2024
+// Version: 1.1
+// Purpose: This file defines types related to hotel documents and search responses.
+
+// Define the type for the Hotel document
 export type HotelType = {
     _id: string;
     userId: string; // ID of the user who owns the hotel
@@ -14,4 +20,14 @@ export type HotelType = {
     starRating: number; // Star rating of the hotel (1 to 5)
     imageUrls: string[]; // Array of URLs of hotel images
     lastUpdated: Date; // Date when the hotel information was last updated
-}
+};
+
+// Define the type for the Hotel search response
+export type HotelSearchResponse = {
+    data: HotelType[]; // Array of hotel documents
+    pagination: {
+        total: number; // Total number of hotels matching the search criteria
+        page: number; // Current page number of the search results
+        pages: number; // Total number of pages of search results
+    };
+};

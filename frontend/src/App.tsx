@@ -16,6 +16,7 @@ import AddHotel from "./pages/AddHotel";
 import { useAppContext } from "./contexts/AppContext";
 import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
+import Search from "./pages/Search";
 
 /**
  * Main component defining the routing configuration for the application.
@@ -71,7 +72,7 @@ const App = () => {
           path="/search"
           element={
             <Layout>
-              <p>Search Page</p>
+              <Search/>
             </Layout>
           }
         />

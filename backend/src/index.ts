@@ -14,6 +14,8 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import { v2 as cloudinary } from 'cloudinary';
 import myHotelRoutes from './routes/my-hotels';
+import hotelRoutes from  './routes/hotels';
+
 
 // Connect to Cloudinary database using environment variable
 cloudinary.config({
@@ -45,7 +47,8 @@ app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 // Routes setup
 app.use("/api/auth", authRoutes); // Authentication routes
 app.use("/api/users", userRoutes); // User-related routes
-app.use("/api/my-hotels", myHotelRoutes); // Adding hotel routes
+app.use("/api/my-hotels", myHotelRoutes); // Adding my hotel routes for logged in users
+app.use("/api/hotels", hotelRoutes); // Adding hotel routes to search and view hotels
 
 app.get("*", (req:Request, res:Response)=>{
   res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
