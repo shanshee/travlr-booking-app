@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form"; // Import useForm hook for form handl
 import { useMutation, useQueryClient } from "react-query"; // Import useMutation and useQueryClient hooks for mutations and caching
 import * as apiClient from "../api-client"; // Import apiClient functions for API requests
 import { useAppContext } from "../contexts/AppContext"; // Import useAppContext hook for accessing application context
-import { Link, useNavigate } from "react-router-dom"; // Import Link and useNavigate for programmatic navigation
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Import Link and useNavigate for programmatic navigation
 
 
 // Define type for form data
@@ -24,6 +24,8 @@ const SignIn = () => {
   const navigate = useNavigate(); // Access navigate for programmatic navigation
   const queryClient = useQueryClient(); // Access queryClient for invalidating queries
 
+  const location = useLocation();
+
   // Use useForm hook to manage form state and validation
   const {
     register,
@@ -37,7 +39,7 @@ const SignIn = () => {
     onSuccess: async () => {
       showToast({ message: "Sign in Successful", type: "SUCCESS" }); // Show success message
       await queryClient.invalidateQueries("validateToken"); // Invalidate token validation query
-      navigate("/"); // Navigate to home page
+      navigate(location.state?.from?.pathname || "/"); // Navigate to home page
     },
     // When sign in encounters an error
     onError: (error: Error) => {

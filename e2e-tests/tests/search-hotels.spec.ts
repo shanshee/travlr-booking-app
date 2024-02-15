@@ -4,7 +4,7 @@
 // Purpose: This file contains end-to-end tests to ensure that the hotel search functionality works as expected.
 // It tests the behavior of the search feature, including searching for hotels in a specific location and verifying the displayed search results.
 
-import { test, expect } from "@playwright/test"
+import { test, expect } from "@playwright/test";
 
 // URL of the UI being tested
 const UI_URL = "http://localhost:5173/";
@@ -42,4 +42,18 @@ test("Should show hotel search results", async ({ page }) => {
   // Verify that the search results are displayed
   await expect(page.getByText("Hotels found in Portland")).toBeVisible();
   await expect(page.getByText("Oregon Luxury Getaways")).toBeVisible();
+});
+
+// Test case to verify view hotel details functionality
+test("Should show hotel detail", async ({ page }) => {
+  await page.goto(UI_URL);
+
+  // Search for hotels in Portland
+  await page.getByPlaceholder("Where are you going?").fill("Portland");
+  await page.getByRole("button", { name: "Search" }).click();
+
+  // Verify that the search results are displayed
+  await page.getByText("Oregon Luxury Getaways").click();
+  await expect(page).toHaveURL(/detail/);
+  await expect(page.getByRole("button", { name: "Book now" })).toBeVisible();
 });

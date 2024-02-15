@@ -17,6 +17,7 @@ import { useAppContext } from "./contexts/AppContext";
 import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
 import Search from "./pages/Search";
+import Detail from "./pages/Details";
 
 /**
  * Main component defining the routing configuration for the application.
@@ -73,6 +74,15 @@ const App = () => {
           element={
             <Layout>
               <Search/>
+            </Layout>
+          }
+        />
+        {/* Route for the details page */}
+        <Route
+          path="/detail/:hotelId"
+          element={
+            <Layout>
+              <Detail />
             </Layout>
           }
         />
