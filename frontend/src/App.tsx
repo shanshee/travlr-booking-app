@@ -18,6 +18,7 @@ import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
 import Search from "./pages/Search";
 import Detail from "./pages/Details";
+import Booking from "./pages/Bookings";
 
 /**
  * Main component defining the routing configuration for the application.
@@ -57,6 +58,14 @@ const App = () => {
 
         {isLoggedIn && (
           <>
+            <Route
+              path="/hotel/:hotelId/booking"
+              element={
+                <Layout>
+                  <Booking />
+                </Layout>
+              }
+            />
             <Route
               path="/add-hotel"
               element={
