@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "cloudinary": "^2.0.0"
-  },
-  "devDependencies": {
-    "@types/react-datepicker": "^4.19.5",
-    "cross-env": "^7.0.3"
-  }
-}
