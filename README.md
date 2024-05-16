@@ -1,69 +1,129 @@
+# Travlr Booking App
 
+Travlr Booking App is a web application designed to streamline the hotel booking process for travelers. It allows users to search for hotels, view detailed information about each property, and make reservations. The application integrates various APIs to provide real-time data and ensure a seamless booking experience.
 
-# Travlr
+Travlr Booking App is built to offer an intuitive and user-friendly interface that simplifies the booking process. The idea for this project stemmed from a desire to create a comprehensive travel booking solution that meets the needs of modern travelers. This project showcases my skills in full-stack development, API integration, and creating dynamic web applications.
 
-## Description:
-Travlr is a comprehensive hotel booking web application designed to facilitate the 
-seamless searching, filtering, booking, and management of hotel stays. It caters to 
-both users looking to book accommodations and website administrators handling
-hotel listings.
+## Features
 
-Overview:
-Travlr was conceived as a capstone project to demonstrate a full spectrum of web
-development skills from front-end design to back-end functionality. The app
-provides a robust platform where users can create an account, search for hotels
-using various filters, and book rooms. Key features include authentication, 
-hotel management, and secure payment transactions via Stripe.
+- **Hotel Search:** Search for hotels based on location and dates.
+- **Detailed Hotel Information:** View detailed information about each hotel, including amenities, reviews, and pricing.
+- **Booking System:** Make reservations directly through the application.
+- **User Accounts:** Create and manage user accounts for a personalized booking experience.
+- **Responsive Design:** Optimized for both desktop and mobile devices.
 
-The development process involved using React.js for the dynamic and responsive
-user interface, combined with Express.js and Node.js on the backend to handle 
-API requests, user authentication, and interactions with the MongoDB database.
-For user and admin convenience, the app includes features like managing bookings
-and adding hotel details and images, which are stored using Cloudinary.
+## Tech Stack
 
-This project highlights not only the ability to integrate various technologies 
-but also focuses on providing a secure and user-friendly experience. 
-The inclusion of payment processing with Stripe and secure authentication
-with JWT ensures that Travlr meets real-world business requirements 
-for e-commerce platforms
+- **Frontend:** React.js, CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **APIs:** Integration with various hotel booking APIs
+- **Libraries:** Axios
 
-Tech Stack:
-* React.js (Frontend Framework)
-* Express.js (Backend Framework)
-* Node.js (Server Environment)
-* MongoDB (Database)
-* JWT (JSON Web Tokens for Authentication)
-* Cloudinary (Image Management and Storage)
-* Stripe (Payment Processing)
-* Axios (HTTP Client)
-* React Router (Navigation Component)
-* Multer (Middleware for Handling multipart/form-data)
-* Bootstrap (Styling and Layout)
+## Website Link
 
-[Website Link](https://travlr-booking-app.onrender.com/)
-Create an account to test functionality
+Please create a fake account and sign in to see functionality :)
+[[Travlr Booking App Website](https://github.com/shanshee/travlr-booking-app)](https://travlr-booking-app.onrender.com/)
 
-<img width="1491" alt="1" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/7072db12-1db5-42e4-9b66-553da9455aa5">
-<img width="1505" alt="2" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/44598cca-5838-4041-bb93-5f1bd26c7bbb">
-<img width="1324" alt="3" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/76da074d-5996-48fa-be0f-4b55bf6ac856">
-<img width="1305" alt="4" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/70ebb643-b407-4606-be7b-6ab3a4b7a923">
-<img width="1489" alt="5" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/e00020b5-e6a1-417e-8674-25fa3996b3da">
-<img width="1474" alt="6" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/9c095868-e475-4fa0-b4a1-969bea7b0a72">
-<img width="1489" alt="7" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/3f0cd3a0-f545-4576-8c54-cb53b74d89dd">
-<img width="1507" alt="8" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/286275e5-6025-4dc1-8caf-056945b020c8">
+## Getting Started
 
+### Prerequisites
 
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+- [Git](https://git-scm.com/)
+- [MongoDB](https://www.mongodb.com/)
 
+### Installation
 
+1. Clone the repository:
 
+   ```bash
+   git clone https://github.com/shanshee/travlr-booking-app.git
+   cd travlr-booking-app
+   ```
 
+2. Install the dependencies for both the frontend and backend:
 
+   ```bash
+   cd frontend
+   npm install
+   cd ../backend
+   npm install
+   ```
 
+3. Create a `.env` file in the `backend` directory and add your environment variables. Example:
 
+   ```plaintext
+   MONGO_URI=your_mongo_db_connection_string
+   API_KEY=your_api_key
+   ```
 
+4. Start the backend server:
 
+   ```bash
+   npm start
+   ```
 
+5. Start the frontend development server (open a new terminal window):
 
+   ```bash
+   cd ../frontend
+   npm start
+   ```
+
+6. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the application.
+
+## Usage
+
+1. Enter the location and dates for your travel.
+2. Browse the list of available hotels and view detailed information about each property.
+3. Create an account or log in to your existing account.
+4. Make a reservation and manage your bookings through your account.
+
+## Contributing
+
+We welcome contributions to improve Travlr Booking App! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
+
+### Steps to Contribute
+
+1. Fork the repository.
+2. Create a new branch:
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+3. Make your changes and commit them:
+
+   ```bash
+   git commit -m "Add your commit message here"
+   ```
+
+4. Push to the branch:
+
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+5. Open a pull request on GitHub.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+For any questions or inquiries, please contact us at slondelle@yahoo.com.
+
+---
+
+Thank you for using Travlr Booking App! Happy travels!
+
+<img width="1491" alt="Screenshot 2024-05-12 at 1 41 26 PM" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/62f9aa21-1f71-4954-8878-3da36b447d2f">
+<img width="1505" alt="Screenshot 2024-05-12 at 1 41 37 PM" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/c74ba132-f945-43b5-814f-41208fb3c24d">
+<img width="1324" alt="Screenshot 2024-05-12 at 1 42 09 PM" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/03e070f2-abfa-49c1-927e-2419b72766c9">
+<img width="1489" alt="Screenshot 2024-05-12 at 1 43 34 PM" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/6abdf13c-0ffa-4db8-a88f-5a798b871740">
 
 
 
