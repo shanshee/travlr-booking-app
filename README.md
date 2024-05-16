@@ -41,8 +41,7 @@ Tech Stack:
 * Bootstrap (Styling and Layout)
 
 [Website Link](https://travlr-booking-app.onrender.com/)
-* Username: test@test.com
-* Password: 12345
+Create an account to test functionality
 
 <img width="1491" alt="1" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/7072db12-1db5-42e4-9b66-553da9455aa5">
 <img width="1505" alt="2" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/44598cca-5838-4041-bb93-5f1bd26c7bbb">
