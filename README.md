@@ -108,9 +108,6 @@ We welcome contributions to improve Travlr Booking App! If you have any suggesti
 
 5. Open a pull request on GitHub.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## Contact
 
@@ -118,7 +115,7 @@ For any questions or inquiries, please contact me at slondelle@yahoo.com.
 
 ---
 
-Thank you for using Travlr Booking App! Happy travels!
+Thank you for using Travlr Booking App! 
 
 <img width="1491" alt="Screenshot 2024-05-12 at 1 41 26 PM" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/62f9aa21-1f71-4954-8878-3da36b447d2f">
 <img width="1505" alt="Screenshot 2024-05-12 at 1 41 37 PM" src="https://github.com/shanshee/travlr-booking-app/assets/119387308/c74ba132-f945-43b5-814f-41208fb3c24d">
