@@ -25,7 +25,7 @@ import { useMutation } from "react-query";
 
 // Define Props and BookingFormData types for TypeScript validation.
 type Props = {
-  currentUser: Usertype;
+  currentUser?: Usertype; // 👈 optional
   paymentIntent: PaymentIntentResponse;
 };
 
@@ -63,7 +63,7 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
   // Initialize form handling with react-hook-form, prefilling with user and search context data.
   const { handleSubmit, register } = useForm<BookingFormData>({
     defaultValues: {
-      firstName: currentUser.firstName,
+      firstName: currentUser?.firstName || "",
       lastName: currentUser.lastName,
       email: currentUser.email,
       adultCount: search.adultCount,
@@ -99,19 +99,32 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
       {/* User information section */}
       <div className="grid grid-cols-2 gap-6">
         {/* Firstname and lastname fields, prepopulated and read-only */}
-        <label className="text-gray-700 text-sm font-bold flex-1">
-          Firstname
-          <input className="mt-1 border rounded w-full py-2 px-3 text-gray-700 bg-gray-200 font-normal" type="text" readOnly disabled {...register("firstName")} />
-        </label>
-        <label className="text-gray-700 text-sm font-bold flex-1">
-          Lastname
-          <input className="mt-1 border rounded w-full py-2 px-3 text-gray-700 bg-gray-200 font-normal" type="text" readOnly disabled {...register("lastName")} />
-        </label>
-        {/* Email field, prepopulated and read-only */}
-        <label className="text-gray-700 text-sm font-bold flex-1">
-          Email
-          <input className="mt-1 border rounded w-full py-2 px-3 text-gray-700 bg-gray-200 font-normal" type="text" readOnly disabled {...register("email")} />
-        </label>
+          <label className="text-gray-700 text-sm font-bold flex-1">
+            Firstname
+            <input
+              className="mt-1 border rounded w-full py-2 px-3 text-gray-700 bg-white font-normal"
+              type="text"
+              {...register("firstName", { required: true })}
+            />
+          </label>
+          
+          <label className="text-gray-700 text-sm font-bold flex-1">
+            Lastname
+            <input
+              className="mt-1 border rounded w-full py-2 px-3 text-gray-700 bg-white font-normal"
+              type="text"
+              {...register("lastName", { required: true })}
+            />
+          </label>
+          
+          <label className="text-gray-700 text-sm font-bold flex-1">
+            Email
+            <input
+              className="mt-1 border rounded w-full py-2 px-3 text-gray-700 bg-white font-normal"
+              type="email"
+              {...register("email", { required: true })}
+            />
+</label>
       </div>
 
       {/* Price summary section */}
