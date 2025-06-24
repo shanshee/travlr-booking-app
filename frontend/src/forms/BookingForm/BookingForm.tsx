@@ -64,16 +64,16 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
   const { handleSubmit, register } = useForm<BookingFormData>({
     defaultValues: {
       firstName: currentUser?.firstName || "",
-      lastName: currentUser.lastName,
-      email: currentUser.email,
+      lastName: currentUser?.lastName || "",
+      email: currentUser?.email || "",
       adultCount: search.adultCount,
       childCount: search.childCount,
       checkIn: search.checkIn.toISOString(),
       checkOut: search.checkOut.toISOString(),
-      hotelId: hotelId,
+      hotelId: hotelId || "",
       totalCost: paymentIntent.totalCost,
       paymentIntentId: paymentIntent.paymentIntentId,
-    },
+    }
   });
 
   // Handle form submission, including payment confirmation through Stripe.
