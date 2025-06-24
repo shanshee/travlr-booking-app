@@ -63,7 +63,7 @@ const Booking = () => {
         numberOfNights={numberOfNights}
         hotel={hotel}
       />
-      {paymentIntentData && (
+      {paymentIntentData && currentUser && (
         <Elements stripe={stripePromise} options={{ clientSecret: paymentIntentData.clientSecret }}>
           <BookingForm currentUser={currentUser} paymentIntent={paymentIntentData} />
         </Elements>
