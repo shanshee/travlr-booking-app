@@ -1,6 +1,6 @@
 // Programmer: Londelle Sheehan (shansheehan@gmail.com)
 // Date: February 4, 2024
-// Version: 1.1
+// Version: 1.2 (Updated to allow guest access to Search and Detail)
 // Purpose: Defines the main routing configuration for the application.
 
 import {
@@ -27,19 +27,19 @@ import Home from "./pages/Home";
  */
 const App = () => {
   const { isLoggedIn } = useAppContext();
+
   return (
     <Router>
       <Routes>
-        {/* Route for the home page */}
+        {/* Public Routes */}
         <Route
           path="/"
           element={
             <Layout>
-              <Home/>
+              <Home />
             </Layout>
           }
         />
-        {/* Route for the registration page */}
         <Route
           path="/register"
           element={
@@ -48,7 +48,6 @@ const App = () => {
             </Layout>
           }
         />
-        {/* Route for the sign-in page */}
         <Route
           path="/sign-in"
           element={
@@ -58,6 +57,25 @@ const App = () => {
           }
         />
 
+        {/* ✅ Make Search and Detail public */}
+        <Route
+          path="/search"
+          element={
+            <Layout>
+              <Search />
+            </Layout>
+          }
+        />
+        <Route
+          path="/detail/:hotelId"
+          element={
+            <Layout>
+              <Detail />
+            </Layout>
+          }
+        />
+
+        {/* Authenticated-only routes */}
         {isLoggedIn && (
           <>
             <Route
@@ -76,25 +94,6 @@ const App = () => {
                 </Layout>
               }
             />
-            {/* Route for the search page */}
-            <Route
-              path="/search"
-              element={
-                <Layout>
-                  <Search />
-                </Layout>
-              }
-            />
-            {/* Route for the details page */}
-            <Route
-              path="/detail/:hotelId"
-              element={
-                <Layout>
-                  <Detail />
-                </Layout>
-              }
-            />
-            {/* Route for editing a hotel */}
             <Route
               path="/edit-hotel/:hotelId"
               element={
@@ -103,7 +102,6 @@ const App = () => {
                 </Layout>
               }
             />
-            {/* Route for user's hotels */}
             <Route
               path="/my-hotels"
               element={
@@ -112,7 +110,6 @@ const App = () => {
                 </Layout>
               }
             />
-            {/* Route for user's bookings */}
             <Route
               path="/my-bookings"
               element={
@@ -123,7 +120,8 @@ const App = () => {
             />
           </>
         )}
-        {/* Default route to redirect to the home page if the entered URL does not match any route */}
+
+        {/* Redirect unmatched routes */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
